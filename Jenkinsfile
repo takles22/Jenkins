@@ -1,5 +1,8 @@
 pipline{
-    agent any
+    agent {
+        label 'aws-agent'
+    }
+
     
     stages{
         stage('build') {
