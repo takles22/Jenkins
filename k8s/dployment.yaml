@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: takles22/javaapp:latest
+        image: mahertakles/jenkins:latest
         ports:
           - containerPort: 80
             protocol: TCP
