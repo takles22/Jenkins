@@ -1,4 +1,4 @@
-FROM maven:3.9.6-ibmjava-8
+FROM maven:ibmjava
 COPY src /app/src
 COPY pom.xml /app
 RUN mvn -f /app/pom.xml clean package
