@@ -1,7 +1,3 @@
-Jenkins CD Pipeline configure - to do what?
-(make sure to change Image name in deployment file)
-
-
 pipeline{
     agent{
         label 'aws-agent'
@@ -14,10 +10,11 @@ pipeline{
                 }
             }
         }
+
         stage('push'){
             steps{
                 script{
-                    withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                     sh 'docker login --username $Username --password $Password'
                     sh 'docker tag java-app $Username/java-app'
                     sh 'docker push $Username/java-app'
@@ -25,6 +22,7 @@ pipeline{
                 }
             }
         }
+
         stage('deploy'){
             steps{
                 script{
